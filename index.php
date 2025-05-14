@@ -34,6 +34,33 @@ include 'includes/contador-visitas.php';
                     <div class="contenedor-imagen-principal">
                         <img src="assets/img/hero-image.jpg" alt="Fotografía profesional" class="imagen-destacada">
                     </div>
+                    <!-- Reproductor de Audio -->
+                    <div class="reproductor-audio">
+                        <div class="controles-audio">
+                            <div class="controles-principales">
+                                <button class="boton-audio" id="prevButton" aria-label="Retroceder">
+                                    <i class="fas fa-backward"></i>
+                                </button>
+                                <button class="boton-audio" id="audioButton" aria-label="Reproducir/Pausar música">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="boton-audio" id="nextButton" aria-label="Adelantar">
+                                    <i class="fas fa-forward"></i>
+                                </button>
+                            </div>
+                            <div class="progreso-audio">
+                                <div class="tiempo-audio">
+                                    <span id="currentTime">0:00</span>
+                                    <span id="duration">0:00</span>
+                                </div>
+                                <input type="range" id="audioProgress" min="0" max="100" value="0">
+                            </div>
+                            <div class="control-volumen">
+                                <i class="fas fa-volume-down"></i>
+                                <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,5 +113,6 @@ include 'includes/contador-visitas.php';
     <script src="assets/js/modo-oscuro.js"></script>
     <script src="assets/js/animaciones.js"></script>
     <script src="assets/js/navegacion.js"></script>
+    <script src="assets/js/audio-player.js"></script>
 </body>
 </html>

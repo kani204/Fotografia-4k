@@ -687,3 +687,265 @@ footer p {
         background-color: #1a1a1a;
     }
 }
+
+/* Botón de audio */
+.boton-audio {
+    background: none;
+    border: none;
+    color: var(--color-texto);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    transition: var(--transicion);
+    margin-left: 0.5rem;
+}
+
+.boton-audio:hover {
+    color: var(--color-primario);
+    transform: scale(1.1);
+}
+
+.boton-audio i {
+    transition: var(--transicion);
+}
+
+/* Animación para el icono de audio */
+@keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.boton-audio i.fa-volume-high {
+    animation: pulsar 2s infinite;
+    color: var(--color-primario);
+}
+
+/* Controles de audio */
+.controles-audio {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-gris);
+    padding: 0.5rem;
+    border-radius: 2rem;
+    margin-left: 1rem;
+}
+
+.boton-audio {
+    background: none;
+    border: none;
+    color: var(--color-texto);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1rem;
+    transition: var(--transicion);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.boton-audio:hover {
+    color: var(--color-primario);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.progreso-audio {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 200px;
+}
+
+.progreso-audio span {
+    font-size: 0.8rem;
+    color: var(--color-texto);
+    min-width: 3rem;
+}
+
+.control-volumen {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.control-volumen i {
+    font-size: 0.9rem;
+    color: var(--color-texto);
+}
+
+/* Estilos para los input range */
+input[type="range"] {
+    -webkit-appearance: none;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    height: 0.5rem;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-primario);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transicion);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+#audioProgress {
+    flex: 1;
+}
+
+#volumeControl {
+    width: 80px;
+}
+
+/* Responsive para los controles de audio */
+@media (max-width: 768px) {
+    .controles-audio {
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--color-claro);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        width: 90%;
+        max-width: 400px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0.75rem;
+    }
+
+    .progreso-audio {
+        width: 100%;
+        order: -1;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Reproductor de audio */
+.reproductor-audio {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.controles-audio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--color-claro);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.controles-principales {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.boton-audio {
+    background: var(--color-gris);
+    border: none;
+    color: var(--color-texto);
+    cursor: pointer;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    transition: var(--transicion);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.boton-audio:hover {
+    color: var(--color-primario);
+    transform: scale(1.1);
+    background: var(--color-claro);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progreso-audio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.tiempo-audio {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.9rem;
+    color: var(--color-texto);
+    padding: 0 0.5rem;
+}
+
+.control-volumen {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0 0.5rem;
+}
+
+.control-volumen i {
+    font-size: 1rem;
+    color: var(--color-texto);
+    min-width: 20px;
+}
+
+/* Estilos para los input range */
+input[type="range"] {
+    -webkit-appearance: none;
+    background: var(--color-gris);
+    border-radius: 1rem;
+    height: 0.5rem;
+    width: 100%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-primario);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transicion);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Responsive para el reproductor */
+@media (max-width: 768px) {
+    .reproductor-audio {
+        margin-top: 1.5rem;
+    }
+
+    .controles-audio {
+        padding: 1rem;
+    }
+
+    .boton-audio {
+        padding: 0.5rem;
+        font-size: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}

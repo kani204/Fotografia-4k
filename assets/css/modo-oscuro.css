@@ -156,3 +156,16 @@ body.tema-oscuro .titulo-servicio {
 body.tema-oscuro .descripcion-servicio {
     color: var(--color-texto);
 }
+
+/* Botón de audio en modo oscuro */
+body.tema-oscuro .boton-audio {
+    color: var(--color-texto);
+}
+
+body.tema-oscuro .boton-audio:hover {
+    color: var(--color-primario);
+}
+
+body.tema-oscuro .boton-audio i.fa-volume-high {
+    color: var(--color-primario);
+}
