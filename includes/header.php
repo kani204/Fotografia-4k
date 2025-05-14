@@ -1,29 +1,78 @@
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.php"><?php echo TITULO_SITIO; ?></a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="servicios.php">Servicios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="portfolio.php">Portafolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="nosotros.php">Nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contacto.php">Contacto</a>
-                </li>
-                <?php if (isset($_SESSION['usuario'])): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="panel-admin.php">Panel de Admin</a>
-                    </li>
-                <?php endif; ?>
-            </ul>
+<header class="cabecera">
+    <nav class="barra-navegacion">
+        <div class="contenedor">
+            <div class="menu-principal">
+                <a class="logo" href="index.php">
+                    <i class="fas fa-camera-retro"></i>
+                    <?php echo TITULO_SITIO; ?>
+                </a>
+
+                <button class="boton-menu" type="button" aria-label="Abrir menú">
+                    <span class="linea"></span>
+                    <span class="linea"></span>
+                    <span class="linea"></span>
+                </button>
+
+                <div class="menu-navegacion">
+                    <ul class="lista-navegacion">
+                        <li class="item-menu <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'activo' : ''; ?>">
+                            <a href="index.php">Inicio</a>
+                        </li>
+                        <li class="item-menu <?php echo basename($_SERVER['PHP_SELF']) == 'servicios.php' ? 'activo' : ''; ?>">
+                            <a href="servicios.php">Servicios</a>
+                        </li>
+                        <li class="item-menu <?php echo basename($_SERVER['PHP_SELF']) == 'portfolio.php' ? 'activo' : ''; ?>">
+                            <a href="portfolio.php">Portafolio</a>
+                        </li>
+                        <li class="item-menu <?php echo basename($_SERVER['PHP_SELF']) == 'nosotros.php' ? 'activo' : ''; ?>">
+                            <a href="nosotros.php">Nosotros</a>
+                        </li>
+                    </ul>
+
+                    <div class="acciones-usuario">
+                        <div class="contador-visitas">
+                            <div class="visitas-totales">
+                                <i class="fas fa-chart-line"></i>
+                                <span title="Visitas totales"><?php echo number_format($totalVisitas); ?></span>
+                            </div>
+                            <div class="visitas-hoy">
+                                <i class="fas fa-users"></i>
+                                <span title="Visitas hoy"><?php echo number_format($visitasHoy); ?></span>
+                            </div>
+                        </div>
+
+                        <?php if (isset($_SESSION['usuario'])): ?>
+                            <div class="menu-usuario">
+                                <button class="boton-usuario">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span><?php echo $_SESSION['usuario']; ?></span>
+                                </button>
+                                <div class="menu-desplegable">
+                                    <a href="panel-admin.php" class="item-desplegable">
+                                        <i class="fas fa-cog"></i>
+                                        Panel Admin
+                                    </a>
+                                    <a href="logout.php" class="item-desplegable">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <div class="botones-sesion">
+                                <a href="login.php" class="boton boton-secundario">Iniciar Sesión</a>
+                                <a href="registro.php" class="boton boton-primario">Registrarse</a>
+                            </div>
+                        <?php endif; ?>
+
+                        <button class="boton-tema" id="botonTema" aria-label="Cambiar tema">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 </header>
+
+<script src="assets/js/navegacion.js"></script>
