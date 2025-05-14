@@ -85,5 +85,6 @@ include 'includes/contador-visitas.php';
     <script src="assets/js/main.js"></script>
     <script src="assets/js/modo-oscuro.js"></script>
     <script src="assets/js/animaciones.js"></script>
+    <script src="assets/js/navegacion.js"></script>
 </body>
 </html>
