@@ -1,42 +1,158 @@
-body {
+/* variables del tema oscuro */
+body.tema-oscuro {
+    --color-primario: #4d94ff;
+    --color-secundario: #1a75ff;
+    --color-texto: #f5f5f5;
+    --color-claro: #1a1a1a;
+    --color-gris: #2a2a2a;
+}
+
+/* estilos generales en modo oscuro */
+body.tema-oscuro {
     background-color: #121212;
-    color: #f5f5f5;
+    color: var(--color-texto);
 }
 
-header {
-    background-color: #1f1f1f;
+/* header y navegacion */
+body.tema-oscuro .cabecera {
+    background-color: var(--color-claro);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-nav a.navbar-brand {
-    color: #f5f5f5;
+body.tema-oscuro .logo {
+    color: var(--color-primario);
 }
 
-nav .navbar-nav .nav-item a {
-    color: #f5f5f5;
+body.tema-oscuro .logo:hover {
+    color: var(--color-secundario);
 }
 
-nav .navbar-nav .nav-item a:hover {
-    background-color: #333;
-    border-radius: 5px;
+body.tema-oscuro .boton-menu .linea {
+    background-color: var(--color-texto);
 }
 
-footer {
-    background-color: #1f1f1f;
-    color: #f5f5f5;
+/* menu de navegacion */
+body.tema-oscuro .item-menu a {
+    color: var(--color-texto);
 }
 
-
-img {
-    border: 3px solid #444;
+body.tema-oscuro .item-menu a:hover,
+body.tema-oscuro .item-menu.activo a {
+    background-color: var(--color-primario);
+    color: #121212;
 }
 
+/* contador de visitas */
+body.tema-oscuro .contador-visitas {
+    background-color: var(--color-gris);
+}
+
+body.tema-oscuro .visitas-totales:hover,
+body.tema-oscuro .visitas-hoy:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Menú de usuario */
+body.tema-oscuro .menu-usuario .boton-usuario {
+    color: var(--color-texto);
+}
+
+body.tema-oscuro .menu-desplegable {
+    background-color: var(--color-claro);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.tema-oscuro .item-desplegable {
+    color: var(--color-texto);
+}
+
+body.tema-oscuro .item-desplegable:hover {
+    background-color: var(--color-gris);
+}
+
+/* botones */
+body.tema-oscuro .boton-primario {
+    background-color: var(--color-primario);
+    color: #121212;
+}
+
+body.tema-oscuro .boton-secundario {
+    border-color: var(--color-primario);
+    color: var(--color-primario);
+}
+
+body.tema-oscuro .boton-secundario:hover {
+    background-color: var(--color-primario);
+    color: #121212;
+}
+
+/* secciones */
+body.tema-oscuro .seccion-principal {
+    background: linear-gradient(to right, #121212 0%, var(--color-gris) 100%);
+}
+
+body.tema-oscuro .tarjeta-servicio {
+    background-color: var(--color-claro);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.tema-oscuro .seccion-contacto {
+    background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+}
+
+/* imagenes */
+body.tema-oscuro .imagen-destacada {
+    border: 3px solid var(--color-gris);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* formularios */
+body.tema-oscuro input,
+body.tema-oscuro textarea,
+body.tema-oscuro select {
+    background-color: var(--color-gris);
+    border-color: var(--color-gris);
+    color: var(--color-texto);
+}
+
+body.tema-oscuro input:focus,
+body.tema-oscuro textarea:focus,
+body.tema-oscuro select:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 2px rgba(77, 148, 255, 0.2);
+}
+
+/* footer */
+body.tema-oscuro footer {
+    background-color: var(--color-claro);
+    color: var(--color-texto);
+}
+
+/* responsive */
 @media (max-width: 768px) {
-    nav .navbar-nav {
-        flex-direction: column;
-        align-items: center;
+    body.tema-oscuro .menu-navegacion {
+        background-color: var(--color-claro);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
+}
 
-    form {
-        width: 90%;
-    }
+/* servicios */
+body.tema-oscuro .seccion-servicios {
+    background-color: #121212;
+}
+
+body.tema-oscuro .imagen-servicio {
+    border: 1px solid var(--color-gris);
+}
+
+body.tema-oscuro .contenido-servicio {
+    background-color: var(--color-claro);
+}
+
+body.tema-oscuro .titulo-servicio {
+    color: var(--color-primario);
+}
+
+body.tema-oscuro .descripcion-servicio {
+    color: var(--color-texto);
 }

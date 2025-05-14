@@ -7,39 +7,45 @@ include 'includes/contador-visitas.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Fotografia 4K</title>
+    <title>Portafolio - Fotografía 4K</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/modo-oscuro.css" id="modoOscuro">
+    <link rel="stylesheet" href="assets/css/modo-oscuro.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
 
-    <main class="container mt-4">
-        <h1 class="text-center">nuestro portfolio</h1>
-        <p class="text-center">mira algunos de nuestros trabajos recientes</p>
-        <div class="row mt-4" id="galeria">
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="assets/img/portfolio1.jpg" class="card-img-top" alt="trabajo 1">
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="assets/img/portfolio2.jpg" class="card-img-top" alt="trabajo 2">
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="assets/img/portfolio3.jpg" class="card-img-top" alt="trabajo 3">
-                </div>
-            </div>
-            <!-- se pueden duplicar mas si hacen falta por las dudas -->
+    <main class="contenedor seccion-portfolio">
+        <h1 class="titulo-seccion texto-centro">Nuestro Portafolio</h1>
+        <div class="galeria-portfolio">
+            <?php
+            // Obtener imágenes de la galería
+            $sql = "SELECT * FROM galeria ORDER BY fecha DESC";
+            $resultado = mysqli_query($conn, $sql);
+            
+            while($imagen = mysqli_fetch_assoc($resultado)) {
+                echo '<div class="item-portfolio">';
+                echo '<div class="imagen-portfolio">';
+                echo '<img src="' . $imagen['imagen'] . '" alt="' . $imagen['titulo'] . '" class="imagen-destacada">';
+                echo '</div>';
+                echo '<div class="info-portfolio">';
+                echo '<h3 class="titulo-portfolio">' . $imagen['titulo'] . '</h3>';
+                echo '<p class="descripcion-portfolio">' . $imagen['descripcion'] . '</p>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
         </div>
     </main>
 
     <?php include 'includes/footer.php'; ?>
-    <script src="assets/js/galeria.js"></script>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
     <script src="assets/js/modo-oscuro.js"></script>
+    <script src="assets/js/navegacion.js"></script>
 </body>
 </html>
