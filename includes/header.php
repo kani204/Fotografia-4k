@@ -45,13 +45,20 @@
                             <div class="menu-usuario">
                                 <button class="boton-usuario">
                                     <i class="fas fa-user-circle"></i>
-                                    <span><?php echo $_SESSION['usuario']; ?></span>
+                                    <span><?php echo htmlspecialchars($_SESSION['usuario']['nombre']); ?></span>
                                 </button>
                                 <div class="menu-desplegable">
+                                    <?php if ($_SESSION['usuario']['rol_id'] == 1): ?>
                                     <a href="panel-admin.php" class="item-desplegable">
                                         <i class="fas fa-cog"></i>
                                         Panel Admin
                                     </a>
+                                    <?php else: ?>
+                                    <a href="perfil.php" class="item-desplegable">
+                                        <i class="fas fa-user"></i>
+                                        Mi Perfil
+                                    </a>
+                                    <?php endif; ?>
                                     <a href="logout.php" class="item-desplegable">
                                         <i class="fas fa-sign-out-alt"></i>
                                         Cerrar Sesión

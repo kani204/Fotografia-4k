@@ -1,36 +1,58 @@
 <?php
 session_start();
-require_once 'db/conexion.php'; 
+require_once 'includes/config.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $correo = htmlspecialchars(trim($_POST['correo']));
-    $contrasena = htmlspecialchars(trim($_POST['contrasena']));
-
-    // buscar el usuario en la base de datos
-    $sql = "SELECT * FROM usuarios WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $correo);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    
+    // Validaciones básicas
+    if (empty($email) || empty($password)) {
+        $_SESSION['error'] = "Por favor, completa todos los campos";
+        header("Location: login.php");
+        exit();
+    }
+    
+    // Buscar usuario por email
+    $stmt = $conn->prepare("SELECT id, nombre, email, password, rol_id FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $resultado = $stmt->get_result();
-
+    
     if ($resultado->num_rows === 1) {
         $usuario = $resultado->fetch_assoc();
-
-        // comparar la contraseña ingresada con la almacenada
-        if (password_verify($contrasena, $usuario['contraseña'])) {
-            $_SESSION['usuario'] = $usuario['nombre'];
-            $_SESSION['email'] = $usuario['email'];
-            header("Location: panel-admin.php");
+        
+        // Verificar contraseña
+        if (password_verify($password, $usuario['password'])) {
+            // Actualizar último acceso
+            $stmt = $conn->prepare("UPDATE usuarios SET ultimo_acceso = CURRENT_TIMESTAMP WHERE id = ?");
+            $stmt->bind_param("i", $usuario['id']);
+            $stmt->execute();
+            
+            // Guardar datos en sesión
+            $_SESSION['usuario'] = [
+                'id' => $usuario['id'],
+                'nombre' => $usuario['nombre'],
+                'email' => $usuario['email'],
+                'rol_id' => $usuario['rol_id']
+            ];
+            
+            // Redirigir según el rol
+            if ($usuario['rol_id'] == 1) {
+                header("Location: panel-admin.php");
+            } else {
+                header("Location: index.php");
+            }
             exit();
         } else {
-            echo "<script>alert('Contraseña incorrecta.'); window.location.href='login.php';</script>";
+            $_SESSION['error'] = "Credenciales incorrectas";
         }
     } else {
-        echo "<script>alert('Correo no registrado.'); window.location.href='login.php';</script>";
+        $_SESSION['error'] = "Credenciales incorrectas";
     }
-
-    $stmt->close();
-    $conn->close();
+    
+    header("Location: login.php");
+    exit();
 } else {
     header("Location: login.php");
     exit();
